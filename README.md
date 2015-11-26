@@ -1,5 +1,5 @@
 # metalsmith-starter
-A pre-selected group of metalsmith plugins that allow you to hit the ground running with metalsmith. see <a href="http://metalsmith.io">metalsmith.io</a>
+A pre-selected group of metalsmith plugins and a content scaffolding that allow you to hit the ground running with your static site built in metalsmith. see <a href="http://metalsmith.io">metalsmith.io</a> for more details.
 
 ## installation
 `git clone git@github.com:pnochisaki/metalsmith-starter.git my-project-name && cd my-project-name`
@@ -22,3 +22,6 @@ A pre-selected group of metalsmith plugins that allow you to hit the ground runn
 
 ## bummers
 you need to save a file in src or layouts after every npm start to cause livereload to see dynamic lists (navigation, posts, etc.) need to fix this!
+
+## thoughts
+As you may or mat not know, Metalsmith, at it's core, does very little.  It simply iterates through your source content and scrapes metadata into a useful form, *does things*, and then copys all the files to the build directory. (seems to do so using primarily bash) There are only a handful of metalsmith starters out there, and they all seem steeped in various flavors of gulp, grunt, and extensive bash scripts. I followed what i would sayis the "metalsmith" way of doing things, by relying ONLY on the metalsmith plugins, npm, and node itself. This intrigues me, since i am interested in learning to write my own node module someday, however, today,I need to hit the ground running and get a site built!
