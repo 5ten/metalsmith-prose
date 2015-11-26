@@ -1,5 +1,5 @@
 # metalsmith-starter
-A pre-selected group of metalsmith plugins that allow you to hit the ground running
+A pre-selected group of metalsmith plugins that allow you to hit the ground running with metalsmith. see metalsmith.io
 
 ## installation
 `git clone git@github.com:pnochisaki/metalsmith-starter.git my-project-name && cd my-project-name`
