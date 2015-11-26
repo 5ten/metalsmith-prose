@@ -1,0 +1,12 @@
+<a href="/"><img src="{{ config.site_logo }}" /></a>
+<header>
+    <nav>
+        <ul>
+            {{#if page}} {{#each page}}
+            <li>
+                <a class="{{path}}" href="/{{path}}">{{title}}</a></h3>
+            </li>
+            {{/each}} {{/if}}
+        </ul>
+    </nav>
+</header>

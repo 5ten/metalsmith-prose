@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>{{ name }} | {{ config.site_name }}</title>
+    {{#if config.dev }}
+        <link rel="stylesheet" type="text/css" href="/css/all.css" /> {{else}}
+        <link rel="stylesheet" type="text/css" href="/{{ fingerprint.[css/all.css] }}" /> {{/if}}
+</head>
+
+<body>
+    {{> header}}
+    <div class="main-wrapper">
+        {{{ contents }}}
+        <h2>{{ name }}</h2>
+        <p>{{ intro_text }}</p>
+        {{#if post}}
+            <h3>Posts</h3>
+            {{#each post}}
+                <li>
+                    <a class="{{path}}" href="/{{path}}">{{title}}</a>
+                    <p>{{teaser}}</p>
+                </li>
+            {{/each}}
+        {{/if}}        
+    </div>
+    {{> footer}}
+</body>
+
+</html>
