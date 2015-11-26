@@ -9,14 +9,14 @@ A pre-selected group of metalsmith plugins that allow you to hit the ground runn
 `npm start`
 
 ## cool things
-* pages and posts (just like wordpress)
-* sass bourbon neat and bitters (totally optional, do whtever you want)
+* pages and posts (yes, just like wordpress, but dead simple to create your own custom content types, see index.js)
+* sass bourbon neat and bitters (totally optional, do whatever you want, see src/css/all.css)
 * livereload
 * handlebars
 * partials
 * pretty urls
-* global config
-* super fast
+* global config (see src/config.yaml)
+* 404 page
 
 ## bummers
 you need to save a file in src or layouts after every npm start to cause livereload to see dynamic lists (navigation, posts, etc.) need to fix this!
