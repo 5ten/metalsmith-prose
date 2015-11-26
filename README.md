@@ -17,6 +17,7 @@ A pre-selected group of metalsmith plugins that allow you to hit the ground runn
 * pretty urls
 * global config (see src/config.yaml)
 * 404 page
+* no gulp or grunt (all npm-based operations, not sure if this is cool or bummer, yet)
 
 ## bummers
 you need to save a file in src or layouts after every npm start to cause livereload to see dynamic lists (navigation, posts, etc.) need to fix this!
