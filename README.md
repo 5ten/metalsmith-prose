@@ -2,9 +2,9 @@
 A pre-selected group of metalsmith plugins that allow you to hit the ground running
 
 ## installation
-`git clone git@github.com:pnochisaki/metalsmith-starter.git my-project-name && cd my-project-name
-npm install
-npm start`
+`git clone git@github.com:pnochisaki/metalsmith-starter.git my-project-name && cd my-project-name`
+`npm install`
+`npm start`
 
 ## cool things
 * pages and posts (just like wordpress)
