@@ -11,7 +11,7 @@ A pre-selected group of metalsmith plugins that allow you to hit the ground runn
 ## cool things
 * pages and posts (yes, just like wordpress, but dead simple to create your own custom content types, see index.js)
 * yaml front matter for all the fields you can eat!
-* sass bourbon neat and bitters (totally optional, do whatever you want, see src/css/all.css)
+* sass bourbon neat and bitters (totally optional, do whatever you want, see src/css/all.scss)
 * livereload
 * handlebars
 * partials
