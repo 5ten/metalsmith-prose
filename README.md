@@ -6,6 +6,8 @@ A pre-selected group of metalsmith plugins and a content scaffolding that allow 
 
 `npm install`
 
+`bower install`
+
 `npm start`
 
 ## cool things
