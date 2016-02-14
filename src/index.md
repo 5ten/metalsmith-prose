@@ -9,7 +9,6 @@ intro_text:  |
 ---
 
 <p>hello world!</p>
-
 {{#if images}}
 <ul>
 {{#each images}}
