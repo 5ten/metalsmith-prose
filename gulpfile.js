@@ -175,7 +175,7 @@ gulp.task('metalsmith', function() {
           collections: {
             projects: {
               output: {
-                path: 'json/projects.json',
+                path: 'json-indexes/projects.json',
                 asObject: true,
                 metadata: {
                   "type": "list"
@@ -185,7 +185,7 @@ gulp.task('metalsmith', function() {
             },
             news: {
               output: {
-                path: 'json/news.json',
+                path: 'json-indexes/news.json',
                 asObject: true,
                 metadata: {
                   "type": "list"
@@ -195,7 +195,7 @@ gulp.task('metalsmith', function() {
             },
             pages: {
               output: {
-                path: 'json/pages.json',
+                path: 'json-indexes/pages.json',
                 asObject: true,
                 metadata: {
                   "type": "list"
@@ -258,7 +258,7 @@ gulp.task('jsonindexes', function() {
         }),
       ]
     }))
-    .pipe(gulp.dest('build/jsonindexes'));
+    .pipe(gulp.dest('build/json'));
 });
 
 
