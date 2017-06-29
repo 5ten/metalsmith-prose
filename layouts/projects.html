@@ -1,0 +1,18 @@
+{{> header}} 
+{{#if projects}}
+<div class="projects">
+    {{#each_upto projects 7}}
+    <div class="project" style="background-image:url({{ imgS main_image }});">
+        <div>
+            <h3>{{title}}</h3>
+            <p>{{teaser}}</p>
+            <a class="button" href="/{{path}}">See More <span class="icon-arrow-right"></span></a>
+        </div>
+    </div>
+    {{/each_upto}}
+</div>
+{{/if}}
+<main>
+    {{{contents}}}
+</main>
+{{> footer}}

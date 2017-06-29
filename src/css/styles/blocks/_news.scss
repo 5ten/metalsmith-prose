@@ -1,0 +1,13 @@
+.news-listing {
+  .news-item {
+    padding-bottom:2rem;
+    h3 {
+      margin:0;
+    }
+    a.button {
+      @include button;
+      margin-top:0;
+      color:$c-darkGray;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.projects {
+  @include clearfix;
+  .project {
+    background-repeat: no-repeat;
+    background-position:  top center;            
+    background-size: 180%;
+    background-color: $c-gray;
+    color:$c-white;
+    @include media('small-screen') {
+      background-attachment: fixed;
+      background-size: cover;
+      background-position:  center center;        
+    }
+    a {
+      @include button;
+    }
+    p {
+      line-height:1.35;
+    }
+
+  }
+}

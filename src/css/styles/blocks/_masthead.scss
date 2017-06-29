@@ -1,0 +1,27 @@
+.masthead {
+    background-repeat:no-repeat;
+    background-position:center center;        
+    background-size: cover;   
+    background-attachment: fixed; 
+    background-color:rgba(0,0,0,.5);
+    padding:3rem;  
+    color:$c-white;
+    text-align:center;
+    div {
+      font-size:2rem;
+      position: relative;
+      z-index:2;
+    }
+    h1,h2 {
+      margin:0;
+    }
+    p {
+      margin:0 1rem;
+      font-size:.5em;
+      line-height:1.35;
+      @include media('small-screen') {
+        margin:0 5rem;
+        font-size:1em;  
+      }
+    }
+}

@@ -1,0 +1,12 @@
+.home-news {
+  .home-news-item {
+    h3 {
+      margin:0 0 2rem 0;
+    }
+    a.button {
+      @include button;
+      margin-top:0;
+      color:$c-darkGray;
+    }
+  }
+}

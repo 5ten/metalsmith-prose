@@ -1,0 +1,21 @@
+form {}
+button, 
+input,
+textarea
+ {
+  @include button;
+  width:100%;
+  text-transform: none;
+  color:$c-gray;
+}
+button, 
+input[type='submit'] {
+  text-transform: uppercase;
+  width:auto;
+  background:$c-white;
+}
+
+.is-hidden {
+  display:none;
+}
+

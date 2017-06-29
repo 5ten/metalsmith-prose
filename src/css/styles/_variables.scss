@@ -1,0 +1,50 @@
+$breakpoints: (
+  'mini'       : ( max-width: 320px ),
+  'small-screen'       : ( min-width: 769px ),
+  'large-screen'       : ( min-width: 1201px ),
+  'short-screen'       : ( max-height: 800px )
+);
+
+$rem-base: 21px;
+
+//fonts
+
+%regular {
+font-family: "Montserrat", sans-serif;
+font-style: normal;
+font-weight: 400;
+}
+%bold {
+font-family: "Montserrat", sans-serif;
+font-style: normal;
+font-weight: 700;
+}
+%heading {
+font-family: 'Libre Baskerville', serif;
+font-style: normal;
+font-weight: 300;
+}
+%button {
+font-family: "Montserrat", sans-serif;
+font-style: normal;
+font-weight: 400;
+}
+%black {
+font-family: "Montserrat", sans-serif;
+font-style: normal;
+font-weight: 900;
+}
+
+
+//colors
+$c-offBlack: #080808;
+$c-orange: #e09900;
+$c-green: #5c9933;
+$c-gray: #808080;
+$c-darkGray: #646464;
+$c-lightGray: #999999;
+$c-extraLightGray: #dedede;
+$c-offWhite: #f6f6f6;
+$c-white: #FFFFFF;
+$c-cream: #f2f1e1;
+$c-beige: #e6e5c7;

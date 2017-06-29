@@ -1,0 +1,125 @@
+/// Makes an item relatively sized according
+/// to a ratio and the screen size
+/// @param {number} $width
+/// @param {number} $height
+/// @example scss - aspect-ratio mixin
+///  @include aspect-ratio(1, 0.8);
+@mixin aspect-ratio($width, $height) {
+
+  @if (type-of($width) != number) or
+      (type-of($height) != number) {
+    @error 'hello';
+  }
+
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > *:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+// Button
+@mixin button {
+    padding: .25rem .5rem;
+    display:inline-block;
+    color: $c-white;
+    border:solid 1px $c-extraLightGray;
+    font-size:1rem;
+    text-transform: uppercase;
+    margin-top:1rem;
+    @extend %button;
+}
+
+
+// Clearfix
+@mixin clearfix {
+  &:after,
+  &:before
+   {
+    clear: both;
+    content: ' ';
+    display: block;
+    visibility: hidden;
+  }
+}
+
+
+// Vertical Align
+@mixin vertical-align {
+  &:before
+   {
+    content: '';
+    height: 100%;
+    margin-right: -1rem;
+    width: 1px;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;    
+  }
+  & > div,
+  & > nav,
+  & > h1 {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    z-index:2;
+  }
+  
+}
+
+
+@mixin all-caps {
+  text-transform: uppercase;
+  font-size:1.5vh;
+  @include media('small-screen') {
+    font-size:0.8rem;
+  }
+  text-decoration:none;
+  font-weight:500;
+  @extend %gotham-medium;
+  .view-mode-resource_mini_teaser & {
+    font-size:0.8em;
+  }
+}
+
+
+// Media Query Fun
+// http://www.sitepoint.com/managing-responsive-breakpoints-sass/
+@mixin media($name, $breakpoint_list: $breakpoints) {
+  // If the key exists in the map
+  @if map-has-key($breakpoint_list, $name) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoint_list, $name))} {
+      @content;
+    }
+  } @else {
+    // If the key doesn't exist in the map
+    @warn 'Unfortunately, no value with #{$name} could be retrieved from `$breakpoint`. '
+        + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+
+@mixin show-more-link(){
+    color:$c-green;
+    @include all-caps;
+    display:block;
+    text-align:center;
+    padding:2rem 0;
+}
+

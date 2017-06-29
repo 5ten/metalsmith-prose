@@ -1,0 +1,75 @@
+prose:
+  ignore: [content/media]
+  media: src/content/media
+  rooturl: src/content
+  metadata:
+    src/content/news:
+    - field: {element: text, label: Title}
+      name: title
+    - field: {element: hidden, value: page.html}
+      name: layout
+    - field: {element: hidden, value: news}
+      name: collection
+    - field: {false: 'false', true: 'true', value: true, label: Published, help: Uncheck
+          to make this post hidden., element: checkbox}
+      name: published
+    - field: {element: textarea, label: Teaser}
+      name: teaser
+    - field: {element: text, help: 'After uploading the image to the body, paste the
+          url here. Format: /content/media/xxx.jpg', label: Image}
+      name: image
+    - field: {element: text, help: Paste a url here., label: Link}
+      name: link
+    - field: {element: text, help: The text of the link., label: Link Text, value: Read
+          More}
+      name: link_text
+    src/content/pages:
+    - field: {element: text, label: Title}
+      name: title
+    - field: {element: hidden, value: page.html}
+      name: layout
+    - field: {element: hidden, value: pages}
+      name: collection
+    - field: {false: 'false', true: 'true', value: true, label: Published, help: Uncheck
+          to make this post hidden., element: checkbox}
+      name: published
+    - field: {element: number, help: Lower numbers appear left on the navigation.,
+        label: Order, type: number}
+      name: order
+    - field: {element: textarea, label: Teaser}
+      name: teaser
+    - field: {element: text, help: 'After uploading the image to the body, paste the
+          url here.', label: Image}
+      name: image
+    src/content/pages/home.md:
+    - field:
+        element: multiselect
+        label: Add Tags
+        options:
+        - {name: Apples, value: apples}
+        - {name: Bananas, value: bananas}
+        placeholder: Choose one
+      name: tags
+    src/content/projects:
+    - field: {element: text, label: Title}
+      name: title
+    - field: {element: text, label: Client}
+      name: client
+    - field: {element: text, label: Services}
+      name: services
+    - field: {element: hidden, value: project.html}
+      name: layout
+    - field: {element: hidden, value: projects}
+      name: collection
+    - field: {false: 'false', true: 'true', value: true, label: Published, help: Uncheck
+          to make this post hidden., element: checkbox}
+      name: published
+    - field: {element: number, help: Lower numbers appear left on the navigation.,
+        label: Order, type: number}
+      name: order
+    - field: {element: textarea, label: Teaser}
+      name: teaser
+    - field: {api_key: 0000000000000000, cloud_name: cloudnamehere, element: cloudinary,
+        help: Select an image here and it will be directly uploaded to Cloudinary,
+        label: Image, upload_preset: aaaaaaaaaa}
+      name: image

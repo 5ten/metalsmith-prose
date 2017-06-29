@@ -1,39 +1,40 @@
-@import '../../bower_components/bourbon/app/assets/stylesheets/bourbon';
-@import 'base/base';
-@import '../../bower_components/neat/app/assets/stylesheets/neat';
 
-body {
-	color:#333;
-	//background:red;
-	@include media($extra-small-screen-up) {
-		background:#efefef;
-	}
-	@include media($small-screen-up) {
-		background:#dedede;
-	}
-	@include media($medium-screen-up) {
-		background:#999999;
-	}
-	@include media($large-screen-up) {
-		background:#666666;
-	}
-	@include media($extra-large-screen-up) {
-		background:#000000;
-		color:#fff;
-	}
-	a {
-		color:#333;
-	}
-	nav {
-		background:#333;
-		color:#fff;
-		padding:1em;
-		li {
-			display:inline-block;
-			padding:0 2em 0 0;
-		}
-		a {
-			color:#fff;
-		}
-	}	
-}
+/* ---------- Icomoon ---------- */
+@import '../icomoon/style.scss';
+
+/* ---------- Normalize ---------- */
+@import 'normalize/import-now';
+
+/* ---------- Variables ---------- */
+@import 'styles/variables';
+
+/* ---------- Mixins ---------- */
+@import 'styles/mixins';
+
+/* ---------- Typography ---------- */
+@import 'styles/typography';
+
+/* ---------- Slick ---------- */
+@import 'vendor/slick';
+
+/* ---------- Hamburgers ---------- */
+@import 'hamburgers/hamburgers';
+
+/* ---------- Global styles ---------- */
+@import 'styles/global';
+
+/* ---------- Modules ---------- */
+@import 'styles/modules/all';
+
+/* ---------- Layouts ---------- */
+@import 'styles/layout';
+
+/* ---------- Layouts ---------- */
+@import 'styles/overrides';
+
+/* ---------- Page styles ---------- */
+@import 'styles/pages/all';
+
+/* ---------- Block styles ---------- */
+@import 'styles/blocks/all';
+;

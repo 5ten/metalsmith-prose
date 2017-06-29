@@ -1,0 +1,85 @@
+
+%icomoon {
+  &:before {
+
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;  
+
+    }
+}
+.text-shadow {
+  text-shadow:0 0 10px rgba(0, 0, 0, 1);
+}   
+.black-bg {
+  background:rgba(0,0,0,.25);
+}
+.dark-black-bg {
+  background:rgba(0,0,0,.5);
+}
+
+body {
+  @extend %regular;
+  line-height:1.35;
+  color:$c-gray;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  @extend %bold;
+  color:$c-offBlack;
+  text-decoration: none;
+  transition: opacity 100ms linear;
+  &:hover {
+    opacity:.66;
+  }
+}
+
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6
+ {
+  @extend %heading;
+  margin:0 0 .15em 0;
+  line-height:1;
+
+}
+
+h1, .h1 {
+  font-size:2rem;
+  @include media('small-screen') {
+    font-size:5rem;
+  }
+}
+h2, .h2 {
+  font-size:2rem;
+  @include media('small-screen') {
+    font-size:5rem;
+  }  
+}
+h3, .h3 {
+  font-size:2rem;
+  @include media('small-screen') {
+    font-size:3rem;
+  }  
+}
+
+p, .p {
+  margin:0 0 1rem 0;
+}
+
+footer a {
+  color:$c-offWhite;
+}
