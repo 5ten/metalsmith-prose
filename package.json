@@ -1,8 +1,7 @@
 {
   "scripts": {
     "start": "gulp",
-    "build": "gulp metalsmith",
-    "dev": "gulp dev"
+    "build": "gulp build"
   },
   "dependencies": {
     "handlebars": "~4.0.4",

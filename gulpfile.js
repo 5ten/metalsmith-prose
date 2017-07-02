@@ -5,6 +5,8 @@ const notify      = require('gulp-notify');
 const plumber     = require('gulp-plumber');
 const favicons    = require("gulp-favicons");
 const gulpCopy    = require('gulp-copy');
+const watch       = require('gulp-watch');
+const sass        = require('gulp-sass');
 
 var markdown      = require('metalsmith-markdown');
 var layouts       = require('metalsmith-layouts');
@@ -12,10 +14,8 @@ var collections   = require('metalsmith-collections');
 var permalinks    = require('metalsmith-permalinks');
 var metadata      = require('metalsmith-metadata');
 var include       = require('metalsmith-include');
-//var api           = require('metalsmith-json-api');
 var tojson        = require('metalsmith-to-json');
 var writemetadata = require('metalsmith-writemetadata');
-
 
 var handlebars    = require('handlebars');
 
@@ -47,10 +47,7 @@ handlebars.registerHelper('each_upto', function(ary, max, options) {
 
 // use this: {{#each_upto this 5}}
 
-
-var watch         = require('gulp-watch');
 var browserSync   = require('browser-sync').create();
-var sass          = require('gulp-sass');
 var reload        = browserSync.reload;
 
 var src = {
