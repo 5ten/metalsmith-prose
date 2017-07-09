@@ -1,12 +1,15 @@
-const gulp        = require('gulp');
-const metalsmith  = require('gulp-metalsmith');
-const imagemin    = require('gulp-imagemin');
-const notify      = require('gulp-notify');
-const plumber     = require('gulp-plumber');
-const favicons    = require("gulp-favicons");
-const gulpCopy    = require('gulp-copy');
-const watch       = require('gulp-watch');
-const sass        = require('gulp-sass');
+const gulp          = require('gulp');
+const metalsmith    = require('gulp-metalsmith');
+const imagemin      = require('gulp-imagemin');
+const notify        = require('gulp-notify');
+const plumber       = require('gulp-plumber');
+const favicons      = require("gulp-favicons");
+const gulpCopy      = require('gulp-copy');
+const watch         = require('gulp-watch');
+const sass          = require('gulp-sass');
+const sourcemaps    = require('gulp-sourcemaps');
+const autoprefixer  = require('gulp-autoprefixer');
+
 
 var markdown      = require('metalsmith-markdown');
 var layouts       = require('metalsmith-layouts');
@@ -102,7 +105,10 @@ gulp.task('sass', function() {
 
     return gulp.src(src.scss)
         .pipe(plumber({errorHandler: onError}))
-        .pipe(sass())
+        .pipe(sourcemaps.init())        
+        .pipe(sass({ outputStyle: 'compressed' }))
+        .pipe(autoprefixer())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(src.css))
         .pipe(notify({
            title: 'Gulp',

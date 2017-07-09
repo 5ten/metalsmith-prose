@@ -3,26 +3,6 @@ prose:
   media: src/content/media
   rooturl: src/content
   metadata:
-    src/content/news:
-    - field: {element: text, label: Title}
-      name: title
-    - field: {element: hidden, value: page.html}
-      name: layout
-    - field: {element: hidden, value: news}
-      name: collection
-    - field: {false: 'false', true: 'true', value: true, label: Published, help: Uncheck
-          to make this post hidden., element: checkbox}
-      name: published
-    - field: {element: textarea, label: Teaser}
-      name: teaser
-    - field: {element: text, help: 'After uploading the image to the body, paste the
-          url here. Format: /content/media/xxx.jpg', label: Image}
-      name: image
-    - field: {element: text, help: Paste a url here., label: Link}
-      name: link
-    - field: {element: text, help: The text of the link., label: Link Text, value: Read
-          More}
-      name: link_text
     src/content/pages:
     - field: {element: text, label: Title}
       name: title
