@@ -7,6 +7,7 @@ const favicons      = require("gulp-favicons");
 const gulpCopy      = require('gulp-copy');
 const watch         = require('gulp-watch');
 const sass          = require('gulp-sass');
+const concat        = require('gulp-concat');
 const sourcemaps    = require('gulp-sourcemaps');
 const autoprefixer  = require('gulp-autoprefixer');
 
@@ -30,12 +31,12 @@ handlebars.registerHelper('cleanTitle', function(str) {
   }
 });
 
-handlebars.registerHelper('imgL', function(str) {
-  return '//res.cloudinary.com/fiveten/image/upload/c_scale,q_auto:good,w_1500/'+str+'.jpg';
+handlebars.registerHelper('imgL', function(str, account) {
+  return '//res.cloudinary.com/' + account + '/image/upload/c_scale,q_auto:good,w_1500/'+str+'.jpg';
 });
 
-handlebars.registerHelper('imgS', function(str) {
-  return '//res.cloudinary.com/fiveten/image/upload/c_scale,q_auto:good,w_1000/'+str+'.jpg';
+handlebars.registerHelper('imgS', function(str, account) {
+  return '//res.cloudinary.com/' + account + '/image/upload/c_scale,q_auto:good,w_1000/'+str+'.jpg';
 });
 
 handlebars.registerHelper('each_upto', function(ary, max, options) {
@@ -55,6 +56,7 @@ var reload        = browserSync.reload;
 
 var src = {
     scss: ['src/css/*.scss', 'src/css/**/*.scss'],
+    js:   ['src/scripts/*.js', 'src/scripts/**/*.js'],
     css:  'build/css',
     html: ['build/**/*.html', 'build/index.html']
 };
@@ -77,15 +79,31 @@ gulp.task('watch', function() {
 
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', ['sass','concatJs'], function() {
 
     browserSync.init({
         server: "./build"
     });
 
     gulp.watch(src.scss, ['sass']);
+    gulp.watch(src.js, ['concatJs']);
     gulp.watch(src.html).on('change', reload);
 });
+
+// Concatenate JS
+gulp.task("concatJs", function() {
+    return gulp.src([
+        'src/scripts/vendor/jquery.min.js',
+        'src/scripts/vendor/slick.min.js',
+        'src/scripts/init.js'
+        ])
+    .pipe(sourcemaps.init())
+    .pipe(concat('all.js'))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('build/scripts'))
+    .pipe(browserSync.stream());
+});
+
 
 // Compile sass into CSS
 gulp.task('sass', function() {
@@ -119,27 +137,6 @@ gulp.task('sass', function() {
         .pipe(reload({stream: true}));
 });
 
-gulp.task('favicons', () =>
-    gulp.src('src/images/logo.png')
-        .pipe(favicons({
-        html: "favicons.html",
-        path: "/favicons/favicons",
-        pipeHTML: true,
-        debug: true,
-        replace: true,
-        icons: {
-            android: true,              // Create Android homescreen icon. `boolean`
-            appleIcon: true,            // Create Apple touch icons. `boolean` or `{ offset: offsetInPercentage }`
-            appleStartup: false,         // Create Apple startup images. `boolean`
-            coast: { offset: 25 },      // Create Opera Coast icon with offset 25%. `boolean` or `{ offset: offsetInPercentage }`
-            favicons: true,             // Create regular favicons. `boolean`
-            firefox: false,              // Create Firefox OS icons. `boolean` or `{ offset: offsetInPercentage }`
-            windows: true,              // Create Windows 8 tile icons. `boolean`
-            yandex: false                // Create Yandex browser icon. `boolean`
-        }       
-    }))
-    .pipe(gulp.dest("./src/favicons"))
-);
 
 gulp.task('metalsmith', function() {
   return gulp.src('src/**')
@@ -162,10 +159,7 @@ gulp.task('metalsmith', function() {
           projects: {
             sortBy: 'order',
             pattern: '/projects/*.md',
-          },
-          news: {
-            pattern: '/news/*.md',
-          }          
+          }
         }),
 
         include({
@@ -179,16 +173,6 @@ gulp.task('metalsmith', function() {
             projects: {
               output: {
                 path: 'json-indexes/projects.json',
-                asObject: true,
-                metadata: {
-                  "type": "list"
-                }
-              },
-              ignorekeys: ['contents', 'next', 'previous', '_vinyl', 'stat', 'layout', 'collection']
-            },
-            news: {
-              output: {
-                path: 'json-indexes/news.json',
                 asObject: true,
                 metadata: {
                   "type": "list"
@@ -229,8 +213,7 @@ gulp.task('jsonpages', function() {
   return gulp.src(
       [
         'src/content/pages/*.md',
-        'src/content/projects/*.md',
-        'src/content/news/*.md'
+        'src/content/projects/*.md'
       ]
     )
     .pipe(metalsmith({
@@ -256,7 +239,7 @@ gulp.task('jsonindexes', function() {
         tojson({
             outputPath: 'json',
             createIndexes : true,
-            indexPaths : ['/projects', '/news', '/pages'],
+            indexPaths : ['/projects', '/pages'],
             onlyOutputIndex : true
         }),
       ]
@@ -271,7 +254,7 @@ gulp.task('imagemin', () =>
         .pipe(gulp.dest('build/content/media'))
 );
 
-gulp.task('default', ['metalsmith', 'sass', 'jsonindexes', 'jsonpages', 'imagemin', 'serve', 'watch']);
-gulp.task('build', ['metalsmith', 'sass', 'jsonindexes', 'jsonpages', 'imagemin']);
+gulp.task('default', ['metalsmith', 'sass', 'concatJs', 'jsonindexes', 'jsonpages', 'imagemin', 'serve', 'watch']);
+gulp.task('build', ['metalsmith', 'sass', 'concatJs', 'jsonindexes', 'jsonpages', 'imagemin']);
 
 
